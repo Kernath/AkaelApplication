@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AkaelApplication.Models.ProdutoTrabalho>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Produtos de Trabalho</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Template)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PraticaEspecifica.Sigla)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Template)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PraticaEspecifica.Sigla)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdProdutoTrabalho }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.IdProdutoTrabalho }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.IdProdutoTrabalho })
+        </td>
+    </tr>
+}
+
+</table>

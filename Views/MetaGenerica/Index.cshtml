@@ -1,0 +1,57 @@
+﻿@model IEnumerable<AkaelApplication.Models.MetaGenerica>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Metas Genéricas</h2>
+
+<p>
+    @Html.ActionLink("Criar Nova", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sigla)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modelo.Sigla)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NivelCapacidade.Sigla)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sigla)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modelo.Sigla)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NivelCapacidade.Sigla)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdMetaGenerica }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.IdMetaGenerica }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.IdMetaGenerica })
+        </td>
+    </tr>
+}
+
+</table>

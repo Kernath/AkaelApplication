@@ -1,0 +1,66 @@
+﻿@model AkaelApplication.Models.AreaProcesso
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Áreas de Processo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sigla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sigla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo.Sigla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo.Sigla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NivelMaturidade.Sigla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NivelMaturidade.Sigla)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdAreaProcesso }) |
+    @Html.ActionLink("Voltar à lista", "Index")
+</p>

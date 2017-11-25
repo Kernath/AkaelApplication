@@ -1,0 +1,58 @@
+﻿@model AkaelApplication.Models.MetaGenerica
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Metas Genéricas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sigla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sigla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo.Sigla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo.Sigla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NivelCapacidade.Sigla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NivelCapacidade.Sigla)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdMetaGenerica }) |
+    @Html.ActionLink("Voltar à Lista", "Index")
+</p>

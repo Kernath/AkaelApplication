@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseAkaelModelStoreContainer" CdmEntityContainer="DatabaseAkaelEntities">
+    <EntitySetMapping Name="C__RefactorLog">
+      <EntityTypeMapping TypeName="DatabaseAkaelModel.C__RefactorLog">
+        <MappingFragment StoreEntitySet="__RefactorLog">
+          <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AreaProcesso">
+      <EntityTypeMapping TypeName="DatabaseAkaelModel.AreaProcesso">
+        <MappingFragment StoreEntitySet="AreaProcesso">
+          <ScalarProperty Name="IdAreaProcesso" ColumnName="IdAreaProcesso" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="IdNivelMaturidade" ColumnName="IdNivelMaturidade" />
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="IdModelo" ColumnName="IdModelo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categoria">
+      <EntityTypeMapping TypeName="DatabaseAkaelModel.Categoria">
+        <MappingFragment StoreEntitySet="Categoria">
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MetaEspecifica">
+      <EntityTypeMapping TypeName="DatabaseAkaelModel.MetaEspecifica">
+        <MappingFragment StoreEntitySet="MetaEspecifica">
+          <ScalarProperty Name="IdMetaEspecifica" ColumnName="IdMetaEspecifica" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="IdAreaProcesso" ColumnName="IdAreaProcesso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MetaGenerica">
+      <EntityTypeMapping TypeName="DatabaseAkaelModel.MetaGenerica">
+        <MappingFragment StoreEntitySet="MetaGenerica">
+          <ScalarProperty Name="IdMetaGenerica" ColumnName="IdMetaGenerica" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="IdNivelCapacidade" ColumnName="IdNivelCapacidade" />
+          <ScalarProperty Name="IdModelo" ColumnName="IdModelo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modelo">
+      <EntityTypeMapping TypeName="DatabaseAkaelModel.Modelo">
+        <MappingFragment StoreEntitySet="Modelo">
+          <ScalarProperty Name="IdModelo" ColumnName="IdModelo" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NivelCapacidade">
+      <EntityTypeMapping TypeName="DatabaseAkaelModel.NivelCapacidade">
+        <MappingFragment StoreEntitySet="NivelCapacidade">
+          <ScalarProperty Name="IdNivelCapacidade" ColumnName="IdNivelCapacidade" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NivelMaturidade">
+      <EntityTypeMapping TypeName="DatabaseAkaelModel.NivelMaturidade">
+        <MappingFragment StoreEntitySet="NivelMaturidade">
+          <ScalarProperty Name="IdNivelMaturidade" ColumnName="IdNivelMaturidade" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PraticaEspecifica">
+      <EntityTypeMapping TypeName="DatabaseAkaelModel.PraticaEspecifica">
+        <MappingFragment StoreEntitySet="PraticaEspecifica">
+          <ScalarProperty Name="IdPraticaEspecifica" ColumnName="IdPraticaEspecifica" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="IdMetaEspecifica" ColumnName="IdMetaEspecifica" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PraticaEspecificaProdutoTrabalho">
+      <EntityTypeMapping TypeName="DatabaseAkaelModel.PraticaEspecificaProdutoTrabalho">
+        <MappingFragment StoreEntitySet="PraticaEspecificaProdutoTrabalho">
+          <ScalarProperty Name="IdPraticaEspecificaProdutoTrabalho" ColumnName="IdPraticaEspecificaProdutoTrabalho" />
+          <ScalarProperty Name="IdPraticaEspecifica" ColumnName="IdPraticaEspecifica" />
+          <ScalarProperty Name="IdProdutoTrabalho" ColumnName="IdProdutoTrabalho" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProdutoTrabalho">
+      <EntityTypeMapping TypeName="DatabaseAkaelModel.ProdutoTrabalho">
+        <MappingFragment StoreEntitySet="ProdutoTrabalho">
+          <ScalarProperty Name="IdProdutoTrabalho" ColumnName="IdProdutoTrabalho" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Template" ColumnName="Template" />
+          <ScalarProperty Name="IdPraticaEspecifica" ColumnName="IdPraticaEspecifica" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

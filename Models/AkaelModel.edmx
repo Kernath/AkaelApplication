@@ -1,0 +1,719 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DatabaseAkaelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AreaProcesso">
+          <Key>
+            <PropertyRef Name="IdAreaProcesso" />
+          </Key>
+          <Property Name="IdAreaProcesso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sigla" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IdNivelMaturidade" Type="int" Nullable="false" />
+          <Property Name="IdCategoria" Type="int" Nullable="false" />
+          <Property Name="IdModelo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MetaEspecifica">
+          <Key>
+            <PropertyRef Name="IdMetaEspecifica" />
+          </Key>
+          <Property Name="IdMetaEspecifica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sigla" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IdAreaProcesso" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MetaGenerica">
+          <Key>
+            <PropertyRef Name="IdMetaGenerica" />
+          </Key>
+          <Property Name="IdMetaGenerica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sigla" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IdNivelCapacidade" Type="int" Nullable="false" />
+          <Property Name="IdModelo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modelo">
+          <Key>
+            <PropertyRef Name="IdModelo" />
+          </Key>
+          <Property Name="IdModelo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sigla" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NivelCapacidade">
+          <Key>
+            <PropertyRef Name="IdNivelCapacidade" />
+          </Key>
+          <Property Name="IdNivelCapacidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sigla" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NivelMaturidade">
+          <Key>
+            <PropertyRef Name="IdNivelMaturidade" />
+          </Key>
+          <Property Name="IdNivelMaturidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sigla" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PraticaEspecifica">
+          <Key>
+            <PropertyRef Name="IdPraticaEspecifica" />
+          </Key>
+          <Property Name="IdPraticaEspecifica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sigla" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IdMetaEspecifica" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PraticaEspecificaProdutoTrabalho">
+          <Key>
+            <PropertyRef Name="IdPraticaEspecificaProdutoTrabalho" />
+          </Key>
+          <Property Name="IdPraticaEspecificaProdutoTrabalho" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPraticaEspecifica" Type="int" Nullable="false" />
+          <Property Name="IdProdutoTrabalho" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProdutoTrabalho">
+          <Key>
+            <PropertyRef Name="IdProdutoTrabalho" />
+          </Key>
+          <Property Name="IdProdutoTrabalho" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Template" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IdPraticaEspecifica" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__AreaProce__IdCat__49C3F6B7">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="AreaProcesso" Type="Self.AreaProcesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="AreaProcesso">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AreaProce__IdMod__4AB81AF0">
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="1" />
+          <End Role="AreaProcesso" Type="Self.AreaProcesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelo">
+              <PropertyRef Name="IdModelo" />
+            </Principal>
+            <Dependent Role="AreaProcesso">
+              <PropertyRef Name="IdModelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AreaProce__IdNiv__48CFD27E">
+          <End Role="NivelMaturidade" Type="Self.NivelMaturidade" Multiplicity="1" />
+          <End Role="AreaProcesso" Type="Self.AreaProcesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NivelMaturidade">
+              <PropertyRef Name="IdNivelMaturidade" />
+            </Principal>
+            <Dependent Role="AreaProcesso">
+              <PropertyRef Name="IdNivelMaturidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MetaEspec__IdAre__4BAC3F29">
+          <End Role="AreaProcesso" Type="Self.AreaProcesso" Multiplicity="1" />
+          <End Role="MetaEspecifica" Type="Self.MetaEspecifica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaProcesso">
+              <PropertyRef Name="IdAreaProcesso" />
+            </Principal>
+            <Dependent Role="MetaEspecifica">
+              <PropertyRef Name="IdAreaProcesso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MetaGener__IdMod__4D94879B">
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="1" />
+          <End Role="MetaGenerica" Type="Self.MetaGenerica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelo">
+              <PropertyRef Name="IdModelo" />
+            </Principal>
+            <Dependent Role="MetaGenerica">
+              <PropertyRef Name="IdModelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MetaGener__IdNiv__4CA06362">
+          <End Role="NivelCapacidade" Type="Self.NivelCapacidade" Multiplicity="1" />
+          <End Role="MetaGenerica" Type="Self.MetaGenerica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NivelCapacidade">
+              <PropertyRef Name="IdNivelCapacidade" />
+            </Principal>
+            <Dependent Role="MetaGenerica">
+              <PropertyRef Name="IdNivelCapacidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PraticaEs__IdMet__4E88ABD4">
+          <End Role="MetaEspecifica" Type="Self.MetaEspecifica" Multiplicity="1" />
+          <End Role="PraticaEspecifica" Type="Self.PraticaEspecifica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetaEspecifica">
+              <PropertyRef Name="IdMetaEspecifica" />
+            </Principal>
+            <Dependent Role="PraticaEspecifica">
+              <PropertyRef Name="IdMetaEspecifica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PraticaEs__IdPra__4F7CD00D">
+          <End Role="PraticaEspecifica" Type="Self.PraticaEspecifica" Multiplicity="1" />
+          <End Role="PraticaEspecificaProdutoTrabalho" Type="Self.PraticaEspecificaProdutoTrabalho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PraticaEspecifica">
+              <PropertyRef Name="IdPraticaEspecifica" />
+            </Principal>
+            <Dependent Role="PraticaEspecificaProdutoTrabalho">
+              <PropertyRef Name="IdPraticaEspecifica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PraticaEs__IdPro__5070F446">
+          <End Role="ProdutoTrabalho" Type="Self.ProdutoTrabalho" Multiplicity="1" />
+          <End Role="PraticaEspecificaProdutoTrabalho" Type="Self.PraticaEspecificaProdutoTrabalho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProdutoTrabalho">
+              <PropertyRef Name="IdProdutoTrabalho" />
+            </Principal>
+            <Dependent Role="PraticaEspecificaProdutoTrabalho">
+              <PropertyRef Name="IdProdutoTrabalho" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProdutoTr__IdPra__5165187F">
+          <End Role="PraticaEspecifica" Type="Self.PraticaEspecifica" Multiplicity="1" />
+          <End Role="ProdutoTrabalho" Type="Self.ProdutoTrabalho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PraticaEspecifica">
+              <PropertyRef Name="IdPraticaEspecifica" />
+            </Principal>
+            <Dependent Role="ProdutoTrabalho">
+              <PropertyRef Name="IdPraticaEspecifica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseAkaelModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AreaProcesso" EntityType="Self.AreaProcesso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MetaEspecifica" EntityType="Self.MetaEspecifica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MetaGenerica" EntityType="Self.MetaGenerica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modelo" EntityType="Self.Modelo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NivelCapacidade" EntityType="Self.NivelCapacidade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NivelMaturidade" EntityType="Self.NivelMaturidade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PraticaEspecifica" EntityType="Self.PraticaEspecifica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PraticaEspecificaProdutoTrabalho" EntityType="Self.PraticaEspecificaProdutoTrabalho" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProdutoTrabalho" EntityType="Self.ProdutoTrabalho" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AreaProce__IdCat__49C3F6B7" Association="Self.FK__AreaProce__IdCat__49C3F6B7">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="AreaProcesso" EntitySet="AreaProcesso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AreaProce__IdMod__4AB81AF0" Association="Self.FK__AreaProce__IdMod__4AB81AF0">
+            <End Role="Modelo" EntitySet="Modelo" />
+            <End Role="AreaProcesso" EntitySet="AreaProcesso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AreaProce__IdNiv__48CFD27E" Association="Self.FK__AreaProce__IdNiv__48CFD27E">
+            <End Role="NivelMaturidade" EntitySet="NivelMaturidade" />
+            <End Role="AreaProcesso" EntitySet="AreaProcesso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MetaEspec__IdAre__4BAC3F29" Association="Self.FK__MetaEspec__IdAre__4BAC3F29">
+            <End Role="AreaProcesso" EntitySet="AreaProcesso" />
+            <End Role="MetaEspecifica" EntitySet="MetaEspecifica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MetaGener__IdMod__4D94879B" Association="Self.FK__MetaGener__IdMod__4D94879B">
+            <End Role="Modelo" EntitySet="Modelo" />
+            <End Role="MetaGenerica" EntitySet="MetaGenerica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MetaGener__IdNiv__4CA06362" Association="Self.FK__MetaGener__IdNiv__4CA06362">
+            <End Role="NivelCapacidade" EntitySet="NivelCapacidade" />
+            <End Role="MetaGenerica" EntitySet="MetaGenerica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PraticaEs__IdMet__4E88ABD4" Association="Self.FK__PraticaEs__IdMet__4E88ABD4">
+            <End Role="MetaEspecifica" EntitySet="MetaEspecifica" />
+            <End Role="PraticaEspecifica" EntitySet="PraticaEspecifica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PraticaEs__IdPra__4F7CD00D" Association="Self.FK__PraticaEs__IdPra__4F7CD00D">
+            <End Role="PraticaEspecifica" EntitySet="PraticaEspecifica" />
+            <End Role="PraticaEspecificaProdutoTrabalho" EntitySet="PraticaEspecificaProdutoTrabalho" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PraticaEs__IdPro__5070F446" Association="Self.FK__PraticaEs__IdPro__5070F446">
+            <End Role="ProdutoTrabalho" EntitySet="ProdutoTrabalho" />
+            <End Role="PraticaEspecificaProdutoTrabalho" EntitySet="PraticaEspecificaProdutoTrabalho" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProdutoTr__IdPra__5165187F" Association="Self.FK__ProdutoTr__IdPra__5165187F">
+            <End Role="PraticaEspecifica" EntitySet="PraticaEspecifica" />
+            <End Role="ProdutoTrabalho" EntitySet="ProdutoTrabalho" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseAkaelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AreaProcesso">
+          <Key>
+            <PropertyRef Name="IdAreaProcesso" />
+          </Key>
+          <Property Name="IdAreaProcesso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sigla" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdNivelMaturidade" Type="Int32" Nullable="false" />
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+          <Property Name="IdModelo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK__AreaProce__IdCat__49C3F6B7" FromRole="AreaProcesso" ToRole="Categoria" />
+          <NavigationProperty Name="Modelo" Relationship="Self.FK__AreaProce__IdMod__4AB81AF0" FromRole="AreaProcesso" ToRole="Modelo" />
+          <NavigationProperty Name="NivelMaturidade" Relationship="Self.FK__AreaProce__IdNiv__48CFD27E" FromRole="AreaProcesso" ToRole="NivelMaturidade" />
+          <NavigationProperty Name="MetaEspecifica" Relationship="Self.FK__MetaEspec__IdAre__4BAC3F29" FromRole="AreaProcesso" ToRole="MetaEspecifica" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AreaProcesso" Relationship="Self.FK__AreaProce__IdCat__49C3F6B7" FromRole="Categoria" ToRole="AreaProcesso" />
+        </EntityType>
+        <EntityType Name="MetaEspecifica">
+          <Key>
+            <PropertyRef Name="IdMetaEspecifica" />
+          </Key>
+          <Property Name="IdMetaEspecifica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sigla" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdAreaProcesso" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AreaProcesso" Relationship="Self.FK__MetaEspec__IdAre__4BAC3F29" FromRole="MetaEspecifica" ToRole="AreaProcesso" />
+          <NavigationProperty Name="PraticaEspecifica" Relationship="Self.FK__PraticaEs__IdMet__4E88ABD4" FromRole="MetaEspecifica" ToRole="PraticaEspecifica" />
+        </EntityType>
+        <EntityType Name="MetaGenerica">
+          <Key>
+            <PropertyRef Name="IdMetaGenerica" />
+          </Key>
+          <Property Name="IdMetaGenerica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sigla" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdNivelCapacidade" Type="Int32" Nullable="false" />
+          <Property Name="IdModelo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Modelo" Relationship="Self.FK__MetaGener__IdMod__4D94879B" FromRole="MetaGenerica" ToRole="Modelo" />
+          <NavigationProperty Name="NivelCapacidade" Relationship="Self.FK__MetaGener__IdNiv__4CA06362" FromRole="MetaGenerica" ToRole="NivelCapacidade" />
+        </EntityType>
+        <EntityType Name="Modelo">
+          <Key>
+            <PropertyRef Name="IdModelo" />
+          </Key>
+          <Property Name="IdModelo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sigla" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AreaProcesso" Relationship="Self.FK__AreaProce__IdMod__4AB81AF0" FromRole="Modelo" ToRole="AreaProcesso" />
+          <NavigationProperty Name="MetaGenerica" Relationship="Self.FK__MetaGener__IdMod__4D94879B" FromRole="Modelo" ToRole="MetaGenerica" />
+        </EntityType>
+        <EntityType Name="NivelCapacidade">
+          <Key>
+            <PropertyRef Name="IdNivelCapacidade" />
+          </Key>
+          <Property Name="IdNivelCapacidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sigla" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="MetaGenerica" Relationship="Self.FK__MetaGener__IdNiv__4CA06362" FromRole="NivelCapacidade" ToRole="MetaGenerica" />
+        </EntityType>
+        <EntityType Name="NivelMaturidade">
+          <Key>
+            <PropertyRef Name="IdNivelMaturidade" />
+          </Key>
+          <Property Name="IdNivelMaturidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sigla" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AreaProcesso" Relationship="Self.FK__AreaProce__IdNiv__48CFD27E" FromRole="NivelMaturidade" ToRole="AreaProcesso" />
+        </EntityType>
+        <EntityType Name="PraticaEspecifica">
+          <Key>
+            <PropertyRef Name="IdPraticaEspecifica" />
+          </Key>
+          <Property Name="IdPraticaEspecifica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sigla" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdMetaEspecifica" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MetaEspecifica" Relationship="Self.FK__PraticaEs__IdMet__4E88ABD4" FromRole="PraticaEspecifica" ToRole="MetaEspecifica" />
+          <NavigationProperty Name="PraticaEspecificaProdutoTrabalho" Relationship="Self.FK__PraticaEs__IdPra__4F7CD00D" FromRole="PraticaEspecifica" ToRole="PraticaEspecificaProdutoTrabalho" />
+          <NavigationProperty Name="ProdutoTrabalho" Relationship="Self.FK__ProdutoTr__IdPra__5165187F" FromRole="PraticaEspecifica" ToRole="ProdutoTrabalho" />
+        </EntityType>
+        <EntityType Name="PraticaEspecificaProdutoTrabalho">
+          <Key>
+            <PropertyRef Name="IdPraticaEspecificaProdutoTrabalho" />
+          </Key>
+          <Property Name="IdPraticaEspecificaProdutoTrabalho" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPraticaEspecifica" Type="Int32" Nullable="false" />
+          <Property Name="IdProdutoTrabalho" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PraticaEspecifica" Relationship="Self.FK__PraticaEs__IdPra__4F7CD00D" FromRole="PraticaEspecificaProdutoTrabalho" ToRole="PraticaEspecifica" />
+          <NavigationProperty Name="ProdutoTrabalho" Relationship="Self.FK__PraticaEs__IdPro__5070F446" FromRole="PraticaEspecificaProdutoTrabalho" ToRole="ProdutoTrabalho" />
+        </EntityType>
+        <EntityType Name="ProdutoTrabalho">
+          <Key>
+            <PropertyRef Name="IdProdutoTrabalho" />
+          </Key>
+          <Property Name="IdProdutoTrabalho" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Template" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdPraticaEspecifica" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PraticaEspecifica" Relationship="Self.FK__ProdutoTr__IdPra__5165187F" FromRole="ProdutoTrabalho" ToRole="PraticaEspecifica" />
+          <NavigationProperty Name="PraticaEspecificaProdutoTrabalho" Relationship="Self.FK__PraticaEs__IdPro__5070F446" FromRole="ProdutoTrabalho" ToRole="PraticaEspecificaProdutoTrabalho" />
+        </EntityType>
+        <Association Name="FK__AreaProce__IdCat__49C3F6B7">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="AreaProcesso" Type="Self.AreaProcesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="AreaProcesso">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AreaProce__IdMod__4AB81AF0">
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="1" />
+          <End Role="AreaProcesso" Type="Self.AreaProcesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelo">
+              <PropertyRef Name="IdModelo" />
+            </Principal>
+            <Dependent Role="AreaProcesso">
+              <PropertyRef Name="IdModelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AreaProce__IdNiv__48CFD27E">
+          <End Role="NivelMaturidade" Type="Self.NivelMaturidade" Multiplicity="1" />
+          <End Role="AreaProcesso" Type="Self.AreaProcesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NivelMaturidade">
+              <PropertyRef Name="IdNivelMaturidade" />
+            </Principal>
+            <Dependent Role="AreaProcesso">
+              <PropertyRef Name="IdNivelMaturidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MetaEspec__IdAre__4BAC3F29">
+          <End Role="AreaProcesso" Type="Self.AreaProcesso" Multiplicity="1" />
+          <End Role="MetaEspecifica" Type="Self.MetaEspecifica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaProcesso">
+              <PropertyRef Name="IdAreaProcesso" />
+            </Principal>
+            <Dependent Role="MetaEspecifica">
+              <PropertyRef Name="IdAreaProcesso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PraticaEs__IdMet__4E88ABD4">
+          <End Role="MetaEspecifica" Type="Self.MetaEspecifica" Multiplicity="1" />
+          <End Role="PraticaEspecifica" Type="Self.PraticaEspecifica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetaEspecifica">
+              <PropertyRef Name="IdMetaEspecifica" />
+            </Principal>
+            <Dependent Role="PraticaEspecifica">
+              <PropertyRef Name="IdMetaEspecifica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MetaGener__IdMod__4D94879B">
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="1" />
+          <End Role="MetaGenerica" Type="Self.MetaGenerica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelo">
+              <PropertyRef Name="IdModelo" />
+            </Principal>
+            <Dependent Role="MetaGenerica">
+              <PropertyRef Name="IdModelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MetaGener__IdNiv__4CA06362">
+          <End Role="NivelCapacidade" Type="Self.NivelCapacidade" Multiplicity="1" />
+          <End Role="MetaGenerica" Type="Self.MetaGenerica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NivelCapacidade">
+              <PropertyRef Name="IdNivelCapacidade" />
+            </Principal>
+            <Dependent Role="MetaGenerica">
+              <PropertyRef Name="IdNivelCapacidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PraticaEs__IdPra__4F7CD00D">
+          <End Role="PraticaEspecifica" Type="Self.PraticaEspecifica" Multiplicity="1" />
+          <End Role="PraticaEspecificaProdutoTrabalho" Type="Self.PraticaEspecificaProdutoTrabalho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PraticaEspecifica">
+              <PropertyRef Name="IdPraticaEspecifica" />
+            </Principal>
+            <Dependent Role="PraticaEspecificaProdutoTrabalho">
+              <PropertyRef Name="IdPraticaEspecifica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProdutoTr__IdPra__5165187F">
+          <End Role="PraticaEspecifica" Type="Self.PraticaEspecifica" Multiplicity="1" />
+          <End Role="ProdutoTrabalho" Type="Self.ProdutoTrabalho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PraticaEspecifica">
+              <PropertyRef Name="IdPraticaEspecifica" />
+            </Principal>
+            <Dependent Role="ProdutoTrabalho">
+              <PropertyRef Name="IdPraticaEspecifica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PraticaEs__IdPro__5070F446">
+          <End Role="ProdutoTrabalho" Type="Self.ProdutoTrabalho" Multiplicity="1" />
+          <End Role="PraticaEspecificaProdutoTrabalho" Type="Self.PraticaEspecificaProdutoTrabalho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProdutoTrabalho">
+              <PropertyRef Name="IdProdutoTrabalho" />
+            </Principal>
+            <Dependent Role="PraticaEspecificaProdutoTrabalho">
+              <PropertyRef Name="IdProdutoTrabalho" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseAkaelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+          <EntitySet Name="AreaProcesso" EntityType="Self.AreaProcesso" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+          <EntitySet Name="MetaEspecifica" EntityType="Self.MetaEspecifica" />
+          <EntitySet Name="MetaGenerica" EntityType="Self.MetaGenerica" />
+          <EntitySet Name="Modelo" EntityType="Self.Modelo" />
+          <EntitySet Name="NivelCapacidade" EntityType="Self.NivelCapacidade" />
+          <EntitySet Name="NivelMaturidade" EntityType="Self.NivelMaturidade" />
+          <EntitySet Name="PraticaEspecifica" EntityType="Self.PraticaEspecifica" />
+          <EntitySet Name="PraticaEspecificaProdutoTrabalho" EntityType="Self.PraticaEspecificaProdutoTrabalho" />
+          <EntitySet Name="ProdutoTrabalho" EntityType="Self.ProdutoTrabalho" />
+          <AssociationSet Name="FK__AreaProce__IdCat__49C3F6B7" Association="Self.FK__AreaProce__IdCat__49C3F6B7">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="AreaProcesso" EntitySet="AreaProcesso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AreaProce__IdMod__4AB81AF0" Association="Self.FK__AreaProce__IdMod__4AB81AF0">
+            <End Role="Modelo" EntitySet="Modelo" />
+            <End Role="AreaProcesso" EntitySet="AreaProcesso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AreaProce__IdNiv__48CFD27E" Association="Self.FK__AreaProce__IdNiv__48CFD27E">
+            <End Role="NivelMaturidade" EntitySet="NivelMaturidade" />
+            <End Role="AreaProcesso" EntitySet="AreaProcesso" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MetaEspec__IdAre__4BAC3F29" Association="Self.FK__MetaEspec__IdAre__4BAC3F29">
+            <End Role="AreaProcesso" EntitySet="AreaProcesso" />
+            <End Role="MetaEspecifica" EntitySet="MetaEspecifica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PraticaEs__IdMet__4E88ABD4" Association="Self.FK__PraticaEs__IdMet__4E88ABD4">
+            <End Role="MetaEspecifica" EntitySet="MetaEspecifica" />
+            <End Role="PraticaEspecifica" EntitySet="PraticaEspecifica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MetaGener__IdMod__4D94879B" Association="Self.FK__MetaGener__IdMod__4D94879B">
+            <End Role="Modelo" EntitySet="Modelo" />
+            <End Role="MetaGenerica" EntitySet="MetaGenerica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MetaGener__IdNiv__4CA06362" Association="Self.FK__MetaGener__IdNiv__4CA06362">
+            <End Role="NivelCapacidade" EntitySet="NivelCapacidade" />
+            <End Role="MetaGenerica" EntitySet="MetaGenerica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PraticaEs__IdPra__4F7CD00D" Association="Self.FK__PraticaEs__IdPra__4F7CD00D">
+            <End Role="PraticaEspecifica" EntitySet="PraticaEspecifica" />
+            <End Role="PraticaEspecificaProdutoTrabalho" EntitySet="PraticaEspecificaProdutoTrabalho" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProdutoTr__IdPra__5165187F" Association="Self.FK__ProdutoTr__IdPra__5165187F">
+            <End Role="PraticaEspecifica" EntitySet="PraticaEspecifica" />
+            <End Role="ProdutoTrabalho" EntitySet="ProdutoTrabalho" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PraticaEs__IdPro__5070F446" Association="Self.FK__PraticaEs__IdPro__5070F446">
+            <End Role="ProdutoTrabalho" EntitySet="ProdutoTrabalho" />
+            <End Role="PraticaEspecificaProdutoTrabalho" EntitySet="PraticaEspecificaProdutoTrabalho" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseAkaelModelStoreContainer" CdmEntityContainer="DatabaseAkaelEntities">
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="DatabaseAkaelModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AreaProcesso">
+            <EntityTypeMapping TypeName="DatabaseAkaelModel.AreaProcesso">
+              <MappingFragment StoreEntitySet="AreaProcesso">
+                <ScalarProperty Name="IdAreaProcesso" ColumnName="IdAreaProcesso" />
+                <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="IdNivelMaturidade" ColumnName="IdNivelMaturidade" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="IdModelo" ColumnName="IdModelo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="DatabaseAkaelModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetaEspecifica">
+            <EntityTypeMapping TypeName="DatabaseAkaelModel.MetaEspecifica">
+              <MappingFragment StoreEntitySet="MetaEspecifica">
+                <ScalarProperty Name="IdMetaEspecifica" ColumnName="IdMetaEspecifica" />
+                <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="IdAreaProcesso" ColumnName="IdAreaProcesso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetaGenerica">
+            <EntityTypeMapping TypeName="DatabaseAkaelModel.MetaGenerica">
+              <MappingFragment StoreEntitySet="MetaGenerica">
+                <ScalarProperty Name="IdMetaGenerica" ColumnName="IdMetaGenerica" />
+                <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="IdNivelCapacidade" ColumnName="IdNivelCapacidade" />
+                <ScalarProperty Name="IdModelo" ColumnName="IdModelo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modelo">
+            <EntityTypeMapping TypeName="DatabaseAkaelModel.Modelo">
+              <MappingFragment StoreEntitySet="Modelo">
+                <ScalarProperty Name="IdModelo" ColumnName="IdModelo" />
+                <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NivelCapacidade">
+            <EntityTypeMapping TypeName="DatabaseAkaelModel.NivelCapacidade">
+              <MappingFragment StoreEntitySet="NivelCapacidade">
+                <ScalarProperty Name="IdNivelCapacidade" ColumnName="IdNivelCapacidade" />
+                <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NivelMaturidade">
+            <EntityTypeMapping TypeName="DatabaseAkaelModel.NivelMaturidade">
+              <MappingFragment StoreEntitySet="NivelMaturidade">
+                <ScalarProperty Name="IdNivelMaturidade" ColumnName="IdNivelMaturidade" />
+                <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PraticaEspecifica">
+            <EntityTypeMapping TypeName="DatabaseAkaelModel.PraticaEspecifica">
+              <MappingFragment StoreEntitySet="PraticaEspecifica">
+                <ScalarProperty Name="IdPraticaEspecifica" ColumnName="IdPraticaEspecifica" />
+                <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="IdMetaEspecifica" ColumnName="IdMetaEspecifica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PraticaEspecificaProdutoTrabalho">
+            <EntityTypeMapping TypeName="DatabaseAkaelModel.PraticaEspecificaProdutoTrabalho">
+              <MappingFragment StoreEntitySet="PraticaEspecificaProdutoTrabalho">
+                <ScalarProperty Name="IdPraticaEspecificaProdutoTrabalho" ColumnName="IdPraticaEspecificaProdutoTrabalho" />
+                <ScalarProperty Name="IdPraticaEspecifica" ColumnName="IdPraticaEspecifica" />
+                <ScalarProperty Name="IdProdutoTrabalho" ColumnName="IdProdutoTrabalho" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProdutoTrabalho">
+            <EntityTypeMapping TypeName="DatabaseAkaelModel.ProdutoTrabalho">
+              <MappingFragment StoreEntitySet="ProdutoTrabalho">
+                <ScalarProperty Name="IdProdutoTrabalho" ColumnName="IdProdutoTrabalho" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Template" ColumnName="Template" />
+                <ScalarProperty Name="IdPraticaEspecifica" ColumnName="IdPraticaEspecifica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

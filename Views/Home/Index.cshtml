@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="conteudo">
+    <h1 class="font-title">AKAEL</h1>
+    <div class="sobre">
+        <h3>Esta ferramenta registra informações de modelo de referência!</h3>
+    </div>
+    <button type="button" class="btn btn-group">
+        @Html.ActionLink("Cadastrar Modelos", "Create", "NivelCapacidade")
+    </button>
+    <button type="button" class="btn btn-group">
+        @Html.ActionLink("Visualizar Modelos", "Index", "NivelCapacidade")
+    </button>
+</div>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AkaelApplication.Models.PraticaEspecifica>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Praticas Específicas</h2>
+
+<p>
+    @Html.ActionLink("Criar Nova", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sigla)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MetaEspecifica.Sigla)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sigla)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MetaEspecifica.Sigla)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdPraticaEspecifica }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.IdPraticaEspecifica }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.IdPraticaEspecifica })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AkaelApplication.Models.NivelCapacidade>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Níveis de Capacidade</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sigla)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sigla)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdNivelCapacidade }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.IdNivelCapacidade }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.IdNivelCapacidade })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Akael</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Site.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")">Akael</a>
+            </div>
+
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastro <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Modelo", "Create", "Modelo")</li>
+                            <li>@Html.ActionLink("Nível Capacidade", "Create", "NivelCapacidade")</li>
+                            <li>@Html.ActionLink("Meta Genérica", "Create", "MetaGenerica")</li>
+                            <li>@Html.ActionLink("Categoria", "Create", "Categoria")</li>
+                            <li>@Html.ActionLink("Nivel de Maturidade", "Create", "NivelCapacidade")</li>
+                            <li>@Html.ActionLink("Área de Processo", "Create", "AreaProcesso")</li>
+                            <li>@Html.ActionLink("Meta Específica", "Create", "MetaEspecifica")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Listagem <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Modelo", "Index", "Modelo")</li>
+                            <li>@Html.ActionLink("Nível Capacidade", "Index", "NivelCapacidade")</li>
+                            <li>@Html.ActionLink("Meta Genérica", "Index", "MetaGenerica")</li>
+                            <li>@Html.ActionLink("Categoria", "Index", "Categoria")</li>
+                            <li>@Html.ActionLink("Nivel de Maturidade", "Index", "NivelCapacidade")</li>
+                            <li>@Html.ActionLink("Área de Processo", "Index", "AreaProcesso")</li>
+                            <li>@Html.ActionLink("Meta Específica", "Index", "MetaEspecifica")</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <footer class="rodape">
+        <p>&copy; @DateTime.Now.Year - Akael Organization</p>
+    </footer>
+</body>
+</html>
