@@ -11,8 +11,7 @@ namespace AkaelApplication.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class MetaEspecifica
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,17 +21,9 @@ namespace AkaelApplication.Models
         }
     
         public int IdMetaEspecifica { get; set; }
-
-        [Required(ErrorMessage = "Campo obrigatório")]
         public string Sigla { get; set; }
-
-        [Required(ErrorMessage = "Campo obrigatório")]
         public string Nome { get; set; }
-
-        [Required(ErrorMessage = "Campo obrigatório")]
         public string Descricao { get; set; }
-
-        [Required(ErrorMessage = "Campo obrigatório")]
         public int IdAreaProcesso { get; set; }
     
         public virtual AreaProcesso AreaProcesso { get; set; }

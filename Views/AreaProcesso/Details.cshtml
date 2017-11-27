@@ -1,4 +1,4 @@
-﻿@model AkaelApplication.Models.AreaProcesso
+﻿@model AkaelApplication.Models.AreaProcessoModelView
 
 @{
     ViewBag.Title = "Details";
@@ -13,7 +13,6 @@
         <dt>
             @Html.DisplayNameFor(model => model.Sigla)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Sigla)
         </dd>
@@ -34,28 +33,114 @@
             @Html.DisplayFor(model => model.Descricao)
         </dd>
 
+        @foreach (var item in Model.SiglaMetaGenerica)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.SiglaMetaGenerica)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SiglaMetaGenerica)
+            </dd>
+        }
+
         <dt>
-            @Html.DisplayNameFor(model => model.Categoria.Nome)
+            @Html.DisplayNameFor(model => model.NomeMetaGenerica)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Categoria.Nome)
+            @Html.DisplayFor(model => model.NomeMetaGenerica)
+        </dd>
+
+        @foreach (var item in Model.SiglaMetaGenerica)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.DescricaoMetaGenerica)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DescricaoMetaGenerica)
+            </dd>
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiglaModelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiglaModelo)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Modelo.Sigla)
+            @Html.DisplayNameFor(model => model.NomeModelo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Modelo.Sigla)
+            @Html.DisplayFor(model => model.NomeModelo)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NivelMaturidade.Sigla)
+            @Html.DisplayNameFor(model => model.DescricaoModelo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NivelMaturidade.Sigla)
+            @Html.DisplayFor(model => model.DescricaoModelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiglaNivelCapacidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiglaNivelCapacidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeNivelCapacidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeNivelCapacidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescricaoNivelCapacidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescricaoNivelCapacidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeCategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiglaMetaEspecifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiglaMetaEspecifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeMetaEspecifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeMetaEspecifica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescricaoMetaEspecifica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescricaoMetaEspecifica)
         </dd>
 
     </dl>

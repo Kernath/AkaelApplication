@@ -11,25 +11,14 @@ namespace AkaelApplication.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class MetaGenerica
     {
         public int IdMetaGenerica { get; set; }
-
-        [Required(ErrorMessage = "Campo obrigatório")]
         public string Sigla { get; set; }
-
-        [Required(ErrorMessage = "Campo obrigatório")]
         public string Nome { get; set; }
-
-        [Required(ErrorMessage = "Campo obrigatório")]
         public string Descricao { get; set; }
-
-        [Required(ErrorMessage = "Campo obrigatório")]
         public int IdNivelCapacidade { get; set; }
-
-        [Required(ErrorMessage = "Campo obrigatório")]
         public int IdModelo { get; set; }
     
         public virtual Modelo Modelo { get; set; }

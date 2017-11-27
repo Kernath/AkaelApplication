@@ -28,12 +28,39 @@ namespace AkaelApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AreaProcesso areaProcesso = db.AreaProcesso.Find(id);
-            if (areaProcesso == null)
+
+            var item = (from ap in db.AreaProcesso
+                        join mg in db.MetaGenerica on ap.IdAreaProcesso equals mg.IdMetaGenerica
+                        join model in db.Modelo on ap.IdAreaProcesso equals model.IdModelo
+                        from nc in db.NivelCapacidade
+                        from c in db.Categoria
+                        join me in db.MetaEspecifica on ap.IdAreaProcesso equals me.IdAreaProcesso
+                        where ap.IdAreaProcesso == id.Value
+                        select new AreaProcessoModelView()
+                        {
+                            SiglaMetaGenerica = mg.Sigla,
+                            NomeMetaGenerica = mg.Nome,
+                            DescricaoMetaGenerica = mg.Descricao,
+                            Sigla = ap.Sigla,
+                            Nome = ap.Nome,
+                            Descricao = ap.Descricao,
+                            SiglaModelo = model.Sigla,
+                            NomeModelo = model.Nome,
+                            DescricaoModelo = model.Descricao,
+                            SiglaNivelCapacidade = nc.Sigla,
+                            NomeNivelCapacidade = nc.Nome,
+                            DescricaoNivelCapacidade = nc.Descricao,
+                            NomeCategoria = c.Nome,
+                            SiglaMetaEspecifica = me.Sigla,
+                            NomeMetaEspecifica = me.Nome,
+                            DescricaoMetaEspecifica = me.Descricao
+                        }).FirstOrDefault();
+
+            if (item == null)
             {
-                return HttpNotFound();
+                return HttpNotFound();  // Or a return a view with message "item not found"
             }
-            return View(areaProcesso);
+            return View(item);
         }
 
         // GET: AreaProcesso/Create

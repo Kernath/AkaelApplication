@@ -11,8 +11,7 @@ namespace AkaelApplication.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class ProdutoTrabalho
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,14 +21,8 @@ namespace AkaelApplication.Models
         }
     
         public int IdProdutoTrabalho { get; set; }
-
-        [Required(ErrorMessage = "Campo obrigatório")]
         public string Nome { get; set; }
-
-        [Required(ErrorMessage = "Campo obrigatório")]
         public string Template { get; set; }
-
-        [Required(ErrorMessage = "Campo obrigatório")]
         public int IdPraticaEspecifica { get; set; }
     
         public virtual PraticaEspecifica PraticaEspecifica { get; set; }

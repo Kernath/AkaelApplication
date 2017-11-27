@@ -182,6 +182,7 @@
     <Compile Include="Models\AreaProcesso.cs">
       <DependentUpon>AkaelModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AreaProcessoModelView.cs" />
     <Compile Include="Models\Categoria.cs">
       <DependentUpon>AkaelModel.tt</DependentUpon>
     </Compile>

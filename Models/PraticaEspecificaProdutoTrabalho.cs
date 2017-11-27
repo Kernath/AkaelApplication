@@ -11,16 +11,11 @@ namespace AkaelApplication.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class PraticaEspecificaProdutoTrabalho
     {
         public int IdPraticaEspecificaProdutoTrabalho { get; set; }
-
-        [Required(ErrorMessage = "Campo obrigatório")]
         public int IdPraticaEspecifica { get; set; }
-
-        [Required(ErrorMessage = "Campo obrigatório")]
         public int IdProdutoTrabalho { get; set; }
     
         public virtual PraticaEspecifica PraticaEspecifica { get; set; }
